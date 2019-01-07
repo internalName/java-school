@@ -15,45 +15,45 @@ public class BasicsLesson {
      */
     public String getSeason(String month) {
         String result = null;
-        switch(month){
+        switch (month) {
             case "ЯНВАРЬ":
-                result="ЗИМА";
+                result = "ЗИМА";
                 break;
-            case "фЕВРАЛЬ":
-                result="ЗИМА";
+            case "ФЕВРАЛЬ":
+                result = "ЗИМА";
                 break;
             case "МАРТ":
-                result="ВЕСНА";
+                result = "ВЕСНА";
                 break;
             case "АПРЕЛЬ":
-                result="ВЕСНА";
+                result = "ВЕСНА";
                 break;
             case "МАЙ":
-                result="ВЕСНА";
+                result = "ВЕСНА";
                 break;
             case "ИЮНЬ":
-                result="ЛЕТО";
+                result = "ЛЕТО";
                 break;
             case "ИЮЛЬ":
-                result="ЛЕТО";
+                result = "ЛЕТО";
                 break;
             case "АВГУСТ":
-                result="ЛЕТО";
+                result = "ЛЕТО";
                 break;
             case "СЕНТЯБРЬ":
-                result="ОСЕНЬ";
+                result = "ОСЕНЬ";
                 break;
             case "ОКТЯБРЬ":
-                result="ОСЕНЬ";
+                result = "ОСЕНЬ";
                 break;
             case "НОЯБРЬ":
-                result="ОСЕНЬ";
+                result = "ОСЕНЬ";
                 break;
             case "ДЕКАБРЬ":
-                result="ЗИМА";
+                result = "ЗИМА";
                 break;
             default:
-                result="НЕТ ДАННЫХ";
+                result = "НЕТ ДАННЫХ";
                 break;
         }
         return result;
@@ -73,9 +73,9 @@ public class BasicsLesson {
      */
     public void xLittleIndians(int x, Logger log) {
 
-        for (int i=x;i>0;i--){
-            if(i==1) log.log(i+"little indian");
-            else log.log(i+"little indians");
+        for (int i = x; i > 0; i--) {
+            if (i == 1) log.log(i + " little indian");
+            else log.log(i + " little indians");
         }
     }
 
@@ -88,9 +88,9 @@ public class BasicsLesson {
      * Получите от сервиса все строки и отправьте их в лог.
      */
     public void logEverything(StringSupplier supplier, Logger log) {
-        do{
+        do {
             log.log(supplier.next());
-        }while(supplier.hasNext());
+        } while (supplier.hasNext());
     }
 
     /**
@@ -101,7 +101,7 @@ public class BasicsLesson {
      */
     public String littleKid(String word) {
         String result = null;
-        result=word.replace('Р','Л');
+        result = word.replace('Р', 'Л');
         return result;
     }
 
@@ -111,19 +111,19 @@ public class BasicsLesson {
      * Создайте в этом пакете ({@link ru.rzn.sbt.javaschool.basics}) новый класс с именем LethalWeapon.<br/>
      * Класс должен содержать:
      * <ul>
-     *     <li>публичное строковое поле color</li>
-     *     <li>приватное поле {@code roundsLeft} типа {@code int} без методов чтения и записи</li>
-     *     <li>приватное поле {@code power типа} {@code Double} с методами чтения и записи</li>
-     *     <li>публичный void-метод {@code reload}, принимающий {@code int} - количество зарядов и увеличивающий
-     *     {@code roundsLeft} на эту величину</li>
-     *     <li>публичный void-метод pewPew без параметров, уменьшающий значение {@code roundsLeft} на 2</li>
-     *     <li>публичный конструктор без параметров</li>
-     *     <li>публичный конструктор, принимающий параметры для всех полей в алфавитном порядке их имён</li>
+     * <li>публичное строковое поле color</li>
+     * <li>приватное поле {@code roundsLeft} типа {@code int} без методов чтения и записи</li>
+     * <li>приватное поле {@code power типа} {@code Double} с методами чтения и записи</li>
+     * <li>публичный void-метод {@code reload}, принимающий {@code int} - количество зарядов и увеличивающий
+     * {@code roundsLeft} на эту величину</li>
+     * <li>публичный void-метод pewPew без параметров, уменьшающий значение {@code roundsLeft} на 2</li>
+     * <li>публичный конструктор без параметров</li>
+     * <li>публичный конструктор, принимающий параметры для всех полей в алфавитном порядке их имён</li>
      * </ul>
      * Создайте объект нового класса, проинициализировав все его поля и верните его из метода {@link #newClass()}.<br/>
      */
     public Object newClass() {
-        Object o = new LethalWeapon("yellow",3.0,5);
+        Object o = new LethalWeapon("yellow", 3.0, 5);
 
         return o;
     }
@@ -148,24 +148,39 @@ public class BasicsLesson {
     /**
      * Получив некоторую строку, получите из нее подстроку со 2-го символа по символ "S",
      * приведите все символы в верхний регистр и верните результат.
+     *
      * @param input
      * @return
      */
     public String stringExercise1(String input) {
 
-        return "";
+        return input.substring(2, input.indexOf("S") + 1).toUpperCase();
     }
 
     /**
      * Получив некоторую строку, найдите длину строки, количество запятых, количество дефисов,
      * индекс первого символа "R", индекс последнего символа "L" и количество пробелолв между словами.
      * Верните результат перемножения всех полученных чисел.
+     *
      * @param input
      * @return
      */
     public int stringExercise2(String input) {
+        int val1 = 0;
+        int val2 = 0;
+        int val3 = 0;
 
-        return 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.toCharArray()[i] == ',') val1++;
+            if (input.toCharArray()[i] == ' ') {
+                if (i - 1 > 0 && i < input.length() - 1 &&
+                        input.toCharArray()[i - 1] != ' ' && input.toCharArray()[i + 1] != ' ')
+                    val2++;
+            }
+            if (input.toCharArray()[i] == '-') val3++;
+        }
+
+        return input.length() * input.indexOf('R') * input.lastIndexOf('L') * val1 * val2 * val3;
     }
 
     /**
@@ -176,11 +191,47 @@ public class BasicsLesson {
      * если в конце есть восклицательный знак - уберите его, если нет - добавьте.<br />
      * 4. если в строке 2 слова и есть слово "Goodbye", поменяйте слова местами (между словами в новой строке тоже должен быть пробел, лишних пробелов быть не должно),
      * сделайте все буквы в нижнем регистре и верните результат.
+     *
      * @param input
      * @return
      */
     public String stringExercise3(String input) {
+        String trimmed = input.trim();
+        int val1 = trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length;
+        String[] str = trimmed.split("\\s+");
 
-        return input;
+
+        if (val1 == 3) {
+            if (getWord(str).equals("Hello")) return str[0] + " " + str[str.length - 1];
+            if (getWord(str).equals("Goodbye")) {
+                if (str[str.length - 1].toCharArray()[str[str.length - 1].toCharArray().length - 1] == '!') {
+                    String sum = "";
+                    for (int i = 0; i < str[str.length - 1].length() - 1; i++) {
+                        sum += str[str.length - 1].toCharArray()[i];
+                    }
+                    return str[0] + " " + sum;
+                } else if (str[str.length - 1].toCharArray()[str[str.length - 1].toCharArray().length - 1] != '!')
+                    return str[0] + " " + str[str.length - 1] + '!';
+
+            }
+        }
+
+        if (val1 == 2) {
+            if (getWord(str).equals("Hello")) return new StringBuffer(input).reverse().toString();
+
+            if (getWord(str).equals("Goodbye")) return str[1].toLowerCase() + " " + str[0].toLowerCase();
+        }
+
+        return String.valueOf(val1);
+    }
+
+    public static String getWord(String[] words) {
+        for (String word : words) {
+
+            if (word.equals("Hello") || word.equals("Goodbye")) {
+                return word;
+            }
+        }
+        return "1";
     }
 }
